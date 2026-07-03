@@ -7,10 +7,17 @@ import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
 import com.example.demo.repository.ContactRepository;
 
+//SpringBootに「Seiviceクラス」と伝える
 @Service
 public class ContactServiceImpl implements ContactService {
 	@Autowired
+	//Repository「ContactRepository」を使用する準備
 	private ContactRepository contactRepository;
+	
+	//SpringBootが自動的にRepositoryの中身をセット
+	public ContactService(ContactRepository contactRepository) {
+		this.contactRepository = contactRepository;
+	}
 
 	@Override
 	public void saveContact(ContactForm contactForm) {
