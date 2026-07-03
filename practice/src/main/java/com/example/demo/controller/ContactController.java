@@ -25,13 +25,6 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 	
-	//ContactControllerコンストラクタ＝自動で実行：
-	//ContactService型の変数contactServiceを要求
-	//ControllerとServiceの接続
-	public ContactController(ContactService contactService) {
-		this.contactService = contactService;
-	}
-	
 	//お問い合わせ一覧画面（12-10）
 	//Controllerとブラウザの接続
 	@GetMapping("/admin/contacts")

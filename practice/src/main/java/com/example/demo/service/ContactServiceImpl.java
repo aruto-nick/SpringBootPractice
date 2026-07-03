@@ -14,10 +14,9 @@ import com.example.demo.repository.ContactRepository;
 @Service
 public class ContactServiceImpl implements ContactService {
 	@Autowired
-	//「contactRepository.メソッド」とリポジトリ内のデータを操作できるようにするため
+	
 	private ContactRepository contactRepository;
 	
-	//
 	public List<Contact>getAllContacts(){
 		return contactRepository.findAll();
 	}
