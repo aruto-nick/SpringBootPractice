@@ -46,3 +46,12 @@ public class Contact {
     private String body;
 
 }
+
+
+
+//12-12以降・DBデータ「adminテーブル」の取り出し
+//@Entity
+//public class admin{
+//	@Id
+//	private Lond id;
+//}

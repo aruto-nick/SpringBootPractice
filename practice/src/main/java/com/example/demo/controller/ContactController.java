@@ -20,6 +20,13 @@ public class ContactController {
 	
 	@Autowired
 	private ContactService contactService;
+	
+	//お問い合わせ一覧画面（12-10）
+	@GetMapping("/admin/contacts")
+	public String showContacts() {
+		
+		return "../admin/contacts";
+	}
 
     @GetMapping("/contact")
     public String contact(Model model) {
