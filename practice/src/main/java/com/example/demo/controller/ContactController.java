@@ -40,6 +40,10 @@ public class ContactController {
 		//Serviceクラスからデータを取得
 		List<Contact>contacts = contactService.getAllContacts();
 		
+		//modelはControllerからブラウザにデータを専用の役割
+		//Controllerに届いたデータcontactsに"contacts"と名付け
+		model.addAttribute("contacts", contacts);
+		
 		return "../admin/contacts";
 	}
 

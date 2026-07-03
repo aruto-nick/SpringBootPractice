@@ -7,9 +7,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
+@Getter
+@Setter
 @Data
 @Table(name = "contacts")
 public class Contact {
@@ -44,6 +48,13 @@ public class Contact {
  
     @Column(name = "body", nullable = false)
     private String body;
+    
+    
+    @Column(name = "created_at", nullable = false)
+    private String createdAt;
+ 
+    @Column(name = "updated_at", nullable = false)
+    private String updatedAt;
 
 }
 
