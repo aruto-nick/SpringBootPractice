@@ -29,11 +29,9 @@
         </thead>
         
         <tbody>
-            
-            <tr th:each="contact : ${contacts}">
-                
-                <!--12個カラム全てを選択 -->
-                <td th:text="${contact.id}">
+            <tr>
+				<!--12個カラム全てを選択 -->
+                <td th:text="${contact.id}"></td>
                 <td th:text="${contact.lastName}"></td>
                 <td th:text="${contact.firstName}"></td>
                 <td th:text="${contact.email}"></td>
@@ -45,8 +43,9 @@
                 <td th:text="${contact.body}"></td>
                 <td th:text="${contact.createdAt}"></td>
                 <td th:text="${contact.updatedAt}"></td>
+			</tr>                          
                 
-            </tr>
+                            
         </tbody>
     </table>
 

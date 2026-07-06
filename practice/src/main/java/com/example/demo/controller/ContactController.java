@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+//PathVariableを使えるようにする→
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Contact;
@@ -41,8 +43,21 @@ public class ContactController {
 	}
 	
 	//Controllerとお問い合わせ詳細画面の接続（12-11）
-	@GetMapping("/contacts/:{id}")
-	public String showContactsDetail 
+	@GetMapping("/admin/contacts/{id}")
+	//URL内の("/contacts/:{id}")idを取得
+	//Model型変数model取得。データをブラウザに運ぶ役割
+	public String showContactsDetail (@PathVariable ("id") Long id, Model model) {
+		
+		
+		  // 1. URLから受け取った「id」を使って、Service経由でDBから1件分のデータを取得
+        Contact contact = contactService.getContactById(id);
+        
+        // 2. 取得したデータを「contact」という名前で詳細画面（HTML）に渡す
+        model.addAttribute("contact", contact);
+        
+        // 3. 詳細画面のHTML（contact_detail.html）を呼び出す
+        return "admin/contact_detail";
+    }
 
     @GetMapping("/contact")
     public String contact(Model model) {
