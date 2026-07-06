@@ -39,6 +39,10 @@ public class ContactController {
 		
 		return "../admin/contacts";
 	}
+	
+	//Controllerとお問い合わせ詳細画面の接続（12-11）
+	@GetMapping("/contacts/:{id}")
+	public String showContactsDetail 
 
     @GetMapping("/contact")
     public String contact(Model model) {
