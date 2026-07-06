@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+//Listを使えるようにする→データを取得するため
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
 import com.example.demo.service.ContactService;
 
@@ -20,6 +24,21 @@ public class ContactController {
 	
 	@Autowired
 	private ContactService contactService;
+	
+	//お問い合わせ一覧画面（12-10）
+	//Controllerとブラウザの接続
+	@GetMapping("/admin/contacts")
+	public String showContacts(Model model) {
+		
+		//Serviceクラスからデータを取得
+		List<Contact>contacts = contactService.getAllContacts();
+		
+		//modelはControllerからブラウザにデータを専用の役割
+		//Controllerに届いたデータcontactsに"contacts"と名付け
+		model.addAttribute("contacts", contacts);
+		
+		return "../admin/contacts";
+	}
 
     @GetMapping("/contact")
     public String contact(Model model) {
