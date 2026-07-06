@@ -43,7 +43,7 @@ public class ContactController {
 	}
 	
 	//Controllerとお問い合わせ詳細画面の接続（12-11）
-	@GetMapping("/admin/contacts/{id}")
+	@GetMapping("/admin/contacts/:{id}")
 	//URL内の("/contacts/:{id}")idを取得
 	//Model型変数model取得。データをブラウザに運ぶ役割
 	public String showContactsDetail (@PathVariable ("id") Long id, Model model) {
@@ -56,7 +56,7 @@ public class ContactController {
         model.addAttribute("contact", contact);
         
         // 3. 詳細画面のHTML（contact_detail.html）を呼び出す
-        return "admin/contact_detail";
+        return "../admin/contact_detail";
     }
 
     @GetMapping("/contact")

@@ -40,5 +40,12 @@ public class ContactServiceImpl implements ContactService {
         contactRepository.save(contact);
 
 	}
+	
+	@Override
+	public Contact getContactById(Long id) {
+		// すでに上定義されている contactRepository を使用してID検索します
+		return contactRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("指定された顧客が見つかりません。ID: " + id));
+	}
 
 }
