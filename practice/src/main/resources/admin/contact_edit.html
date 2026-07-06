@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>お問い合わせ編集画面</title>
+	</head>
+	
+	<body>
+		<h1>お問い合わせ編集画面</h1>
+		
+		//入力データをjava（サーバー側）に送信する役割
+		<form th:action="@{/admin/contacts/{id}/update (id = ${contact.id})}"
+			  th:object="${contact}" method="post">
+		
+		
+		</form>
+	
+	</body>
+	
+</html>
