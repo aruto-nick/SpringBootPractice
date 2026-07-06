@@ -12,7 +12,7 @@ public interface ContactService {
 	List<Contact> getAllContacts();
 	
 	
-	//
+	//実装クラスContactServiceImplにて使用するメソッドを宣言
 	Contact getContactById(Long id);
 
 }

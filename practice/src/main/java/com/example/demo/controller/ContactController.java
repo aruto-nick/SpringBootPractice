@@ -49,7 +49,7 @@ public class ContactController {
 	public String showContactsDetail (@PathVariable ("id") Long id, Model model) {
 		
 		
-		  // 1. URLから受け取った「id」を使って、Service経由でDBから1件分のデータを取得
+		  // 1. URLから受け取った「id」を使って、Serviceに届いたDBデータを１件取得
         Contact contact = contactService.getContactById(id);
         
         // 2. 取得したデータを「contact」という名前で詳細画面（HTML）に渡す

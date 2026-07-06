@@ -41,10 +41,12 @@ public class ContactServiceImpl implements ContactService {
 
 	}
 	
+	//インターフェースにて宣言したメソッドの説明をする合図
 	@Override
 	public Contact getContactById(Long id) {
-		// すでに上定義されている contactRepository を使用してID検索します
+		// Repositoryクラスからidデータを出力
 		return contactRepository.findById(id)
+				//もしくはデータが萎えればエラーを表示
 				.orElseThrow(() -> new IllegalArgumentException("指定された顧客が見つかりません。ID: " + id));
 	}
 
