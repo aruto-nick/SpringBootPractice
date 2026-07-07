@@ -56,5 +56,13 @@ public class ContactServiceImpl implements ContactService {
 		//リポジトリにcontactデータの保存（更新）を指示
 		contactRepository.save(contact);
 	}
+	
+	//削除機能(12-11)
+	@Override
+	public void deleteContactById(Long id) {
+		
+		//リポジトリにデータの削除を指示
+		contactRepository.deleteById(id);
+	}
 
 }

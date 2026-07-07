@@ -17,4 +17,7 @@ public interface ContactService {
 
 	//Entityを受け取りDBに保存（更新）するメソッド
 	void updateContact(Contact contact);
+	
+	//データを削除するメソッド
+	void deleteContactById(Long id);
 }

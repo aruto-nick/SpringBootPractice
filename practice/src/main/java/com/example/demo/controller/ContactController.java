@@ -82,6 +82,20 @@ public class ContactController {
 		// 2. 更新が完了後、お問い合わせ一覧画面（/admin/contacts）に自動で戻る（リダイレクト）
 		return "redirect:/admin/contacts";
 	}
+	
+	//削除機能
+	//HTML削除ボタンとControllerを接続
+	@PostMapping("/admin/contacts/{id}/delete")
+	
+	//URLのid部分からデータを取得してLong型の変数名idとして扱う
+	public String deleteContact(@PathVariable ("id") Long id) {
+		
+		//Serviceにデータ消去を指示
+		contactService.deleteContactById(id);
+		
+		//データ消去指示の後、お問い合わせ一覧画面に戻る
+		return "redirect:/admin/contacts";
+	}
 
     @GetMapping("/contact")
     public String contact(Model model) {

@@ -31,10 +31,18 @@
                 <td th:text="${contact.contactType}"></td>
                 <td th:text="${contact.createdAt}"></td>
                 <td th:text="${contact.updatedAt}"></td>
+                
+                <!-- 編集機能(12-11) -->
                 <td>
 					<a th:href="@{/admin/contacts/:{id}/edit(id=${contact.id})}">編集</a>
 				</td>
                 
+                <!--　削除機能(12-11) -->
+                <td>
+					<form th:action="@{/admin/contacts/{id}/delete(id = ${contact.id})}" method="post">
+						<button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+					</form>
+				</td>
             </tr>
         </tbody>
     </table>
