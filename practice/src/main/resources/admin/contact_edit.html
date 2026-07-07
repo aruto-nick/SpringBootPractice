@@ -9,11 +9,12 @@
 	<body>
 		<h1>お問い合わせ編集画面</h1>
 		
-		<!--入力データをjava（サーバー側）に送信する役割-->
+		<!--①入力データをControllerに送信　②データをcontactという箱に入れる-->
 		<form th:action="@{/admin/contacts/{id}/update (id = ${contact.id})}"
+			　
 			  th:object="${contact}" method="post">
 			  
-			  <!-- 【重要】既存のデータを消さずに保持するための隠しフィールド群 -->
+			  <!-- id等の変更しないデータを扱うが画面には表示しない→空データのままControllerに届くとエラーのため -->
 			  <input type="hidden" th:field="*{id}" />
 			  <input type="hidden" th:field="*{createdAt}" />
 			  <input type="hidden" th:field="*{updatedAt}" />

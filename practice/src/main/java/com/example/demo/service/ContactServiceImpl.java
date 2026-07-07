@@ -53,6 +53,7 @@ public class ContactServiceImpl implements ContactService {
 	//更新機能(12-11)
 	@Override
 	public void updateContact(Contact contact) {
+		//リポジトリにcontactデータの保存（更新）を指示
 		contactRepository.save(contact);
 	}
 
