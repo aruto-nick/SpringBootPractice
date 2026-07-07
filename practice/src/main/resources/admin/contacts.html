@@ -39,7 +39,7 @@
                 
                 <!--　削除機能(12-11) -->
                 <td>
-					<form th:action="@{/admin/contacts/{id}/delete(id = ${contact.id})}" method="post">
+					<form th:action="@{/admin/contacts/{id}/delete(id = ${contact.id})}" th:method="delete">
 						<button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
 					</form>
 				</td>

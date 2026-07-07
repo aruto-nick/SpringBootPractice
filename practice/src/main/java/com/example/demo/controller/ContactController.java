@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 //PathVariableを使えるようにする→
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
@@ -72,7 +74,7 @@ public class ContactController {
 	
 	//編集機能(12-11)
 	// 更新を実行し、一覧画面にリダイレクトする処理
-	@PostMapping("/admin/contacts/{id}/update")
+	@PutMapping("/admin/contacts/{id}/update")
 	//HTMLのcontactという名のフォームから届いたデータをContactというEntityクラスの箱に入れる。箱の名前はcontact
 	public String updateContact(@PathVariable("id") Long id, @ModelAttribute("contact") Contact contact) {
 		
@@ -85,7 +87,7 @@ public class ContactController {
 	
 	//削除機能
 	//HTML削除ボタンとControllerを接続
-	@PostMapping("/admin/contacts/{id}/delete")
+	@DeleteMapping("/admin/contacts/{id}/delete")
 	
 	//URLのid部分からデータを取得してLong型の変数名idとして扱う
 	public String deleteContact(@PathVariable ("id") Long id) {

@@ -12,7 +12,7 @@
 		<!--①入力データをControllerに送信　②データをcontactという箱に入れる-->
 		<form th:action="@{/admin/contacts/{id}/update (id = ${contact.id})}"
 			　
-			  th:object="${contact}" method="post">
+			  th:object="${contact}" th:method="put">
 			  
 			  <!-- id等の変更しないデータを扱うが画面には表示しない→空データのままControllerに届くとエラーのため -->
 			  <input type="hidden" th:field="*{id}" />
