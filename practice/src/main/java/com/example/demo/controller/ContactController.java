@@ -58,6 +58,18 @@ public class ContactController {
         // 3. 詳細画面のHTML（contact_detail.html）を呼び出す
         return "../admin/contact_detail";
     }
+	
+	//Controllerと編集画面を接続(12-11)
+	@GetMapping("/admin/contacts/:{id}/edit")
+		public String showEdit(@PathVariable("id") Long id, Model model) {
+			
+			Contact contact = contactService.getContactById(id);
+			
+			model.addAttribute("contact", contact);
+			
+			return "../admin/contact_edit";
+		}
+	
 
     @GetMapping("/contact")
     public String contact(Model model) {
