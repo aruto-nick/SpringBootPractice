@@ -49,5 +49,11 @@ public class ContactServiceImpl implements ContactService {
 				//もしくはデータが萎えればエラーを表示
 				.orElseThrow(() -> new IllegalArgumentException("指定された顧客が見つかりません。ID: " + id));
 	}
+	
+	//更新機能(12-11)
+	@Override
+	public void updateContact(Contact contact) {
+		contactRepository.save(contact);
+	}
 
 }

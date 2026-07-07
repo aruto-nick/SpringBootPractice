@@ -9,26 +9,40 @@
 	<body>
 		<h1>お問い合わせ編集画面</h1>
 		
-		//入力データをjava（サーバー側）に送信する役割
+		<!--入力データをjava（サーバー側）に送信する役割-->
 		<form th:action="@{/admin/contacts/{id}/update (id = ${contact.id})}"
 			  th:object="${contact}" method="post">
 			  
-			  <input type="hidden" th:field="*{id}">
+			  <!-- 【重要】既存のデータを消さずに保持するための隠しフィールド群 -->
+			  <input type="hidden" th:field="*{id}" />
+			  <input type="hidden" th:field="*{phone}" />
+			  <input type="hidden" th:field="*{zipCode}" />
+			  <input type="hidden" th:field="*{address}" />
+			  <input type="hidden" th:field="*{buildingName}" />
+			  <input type="hidden" th:field="*{contactType}" />
+			  <input type="hidden" th:field="*{body}" />
+			  <!-- もし作成日時・更新日時カラムがあれば、それらも追加します -->
+			  <input type="hidden" th:field="*{createdAt}" />
+			  <input type="hidden" th:field="*{updatedAt}" />
 			  
 			  <table border="1">
 				  <tr>
 					  <th>姓</th>
-					  <td><input type="text" th:field="*{lastName}"></td>
+					  <td><input type="text" th:field="*{lastName}" /></td>
 				  </tr>
 				  <tr>
 					  <th>名</th>
-					  <td><input type="text" th:field="*{firstName}"></td>
+					  <td><input type="text" th:field="*{firstName}" /></td>
 				  </tr>
-				  <th>メールアドレス</th>
-				  <td><input type="text" th:field="*{email}"></td>
+				  <tr>
+					  <th>メールアドレス</th>
+				  	  <td><input type="text" th:field="*{email}" /></td>
+				  </tr>
+				  
+				  
 			  </table>
 			  
-			  //更新実行ボタン
+			  <!--更新実行ボタン-->
 			  <button type="submit">
 				  更新
 			  </button>

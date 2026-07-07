@@ -15,4 +15,6 @@ public interface ContactService {
 	//実装クラスContactServiceImplにて使用するメソッドを宣言
 	Contact getContactById(Long id);
 
+	//Entityを受け取りDBに保存（更新）するメソッド
+	void updateContact(Contact contact);
 }

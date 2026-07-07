@@ -70,6 +70,18 @@ public class ContactController {
 			return "../admin/contact_edit";
 		}
 	
+	//編集機能(12-11)
+	// 更新を実行し、一覧画面にリダイレクトする処理
+	@PostMapping("/admin/contacts/{id}/update")
+	public String updateContact(@PathVariable("id") Long id, @ModelAttribute("contact") Contact contact) {
+		
+		// 1. 画面から送られてきた更新データ（contact）をService経由でデータベースに保存する
+		// ※メソッド名は実際のServiceクラスに合わせて変更してください（例: updateContact や saveContact など）
+		contactService.updateContact(contact); 
+		
+		// 2. 更新が完了したら、お問い合わせ一覧画面（/admin/contacts）に自動で戻る（リダイレクト）
+		return "redirect:/admin/contacts";
+	}
 
     @GetMapping("/contact")
     public String contact(Model model) {
