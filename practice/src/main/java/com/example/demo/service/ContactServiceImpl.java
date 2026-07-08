@@ -40,5 +40,29 @@ public class ContactServiceImpl implements ContactService {
         contactRepository.save(contact);
 
 	}
+	
+	//インターフェースにて宣言したメソッドの説明をする合図
+	@Override
+	public Contact getContactById(Long id) {
+		// Repositoryクラスからidデータを出力
+		return contactRepository.findById(id)
+				//もしくはデータが萎えればエラーを表示
+				.orElseThrow(() -> new IllegalArgumentException("指定された顧客が見つかりません。ID: " + id));
+	}
+	
+	//更新機能(12-11)
+	@Override
+	public void updateContact(Contact contact) {
+		//リポジトリにcontactデータの保存（更新）を指示
+		contactRepository.save(contact);
+	}
+	
+	//削除機能(12-11)
+	@Override
+	public void deleteContactById(Long id) {
+		
+		//リポジトリにデータの削除を指示
+		contactRepository.deleteById(id);
+	}
 
 }

@@ -10,5 +10,14 @@ public interface ContactService {
 	void saveContact(ContactForm contactForm);
 	
 	List<Contact> getAllContacts();
+	
+	
+	//実装クラスContactServiceImplにて使用するメソッドを宣言
+	Contact getContactById(Long id);
 
+	//Entityを受け取りDBに保存（更新）するメソッド
+	void updateContact(Contact contact);
+	
+	//データを削除するメソッド
+	void deleteContactById(Long id);
 }
