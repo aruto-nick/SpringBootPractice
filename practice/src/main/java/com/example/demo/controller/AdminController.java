@@ -39,5 +39,13 @@ public class AdminController {
 		//一覧画面に戻る
 		return "redirect:/admin/contacts";
 	}
+	
+	//URL(admin/sign)にアクセス後の処理を定義
+	@GetMapping("/admin/signin")
+	public String showLoginForm() {
+		
+		//URL(admin/sign)をブラウザに表示
+		return "../admin/signin";
+	}
 
 }
