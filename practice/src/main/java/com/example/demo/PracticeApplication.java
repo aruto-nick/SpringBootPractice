@@ -38,7 +38,7 @@ public class PracticeApplication{
 					//ログイン画面のURL
 					.loginPage("/admin/signin")
 					//ログイン成功後に移動するURL「お問い合わせ一覧画面」
-					.defaultSuccessUrl("/admin/contact", true)
+					.defaultSuccessUrl("/admin/contacts", true)
 					//ログイン画面は「全員アクセス許可」
 					.permitAll()
 			)
