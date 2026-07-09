@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>管理者の新規登録画面</title>
+	</head>
+	
+	<body>
+		<h1>管理者の新規登録画面</h1>
+		
+		<form  th:action="@{/admin/signup}"
+			   th:object="${admin}" th:method="post">
+			
+			<table border="1">			
+				
+				<tr>
+					<th>姓</th>
+					<td><input type="text" th:field="*{lastName}" /></td>
+				</tr>
+				<tr>
+					<th>名</th>
+					<td><input type="text" th:field="*{firstName}" /></td>
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td><input type="text" th:field="*{email}" /></td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td><input type="password" th:field="*{password}" /></td>
+				</tr>
+			</table>
+			
+			<!-- 登録ボタン -->
+			<button type="submit">登録</button>
+		
+		</form>
+
+	
+	</body>
+	
+</html>
