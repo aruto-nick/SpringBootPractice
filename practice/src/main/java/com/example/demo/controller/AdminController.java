@@ -14,7 +14,6 @@ import com.example.demo.service.AdminService;
 @Controller
 public class AdminController {
 	
-	//
 	@Autowired
 	private AdminService adminService;
 	
