@@ -9,7 +9,7 @@
 		<h1>ログイン画面</h1>
 		
 		<!-- ログインクリック時、signinにデータを送信する -->
-		<form  th:action="@{/admin/signin}" method="post">
+		<form  th:action="@{/admin/signin}" method="post" th:object="${signinForm}">
 		
 			<table>
 				<tr>

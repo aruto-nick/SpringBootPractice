@@ -9,13 +9,20 @@ import lombok.Data;
 
 @Data
 //役割：バリデーション（入力値チェック）をするためのクラス
-public class AdminForm implements Serializable{
+public class SignupForm implements Serializable{
 	
 	//バリデーション：空文字禁止
+	@NotBlank
+	private String firstName;
+	
+	@NotBlank
+	private String lastName;
+	
 	@NotBlank
 	@Email
 	private String email;
 	
 	@NotBlank
 	private String password;
+	
 }
