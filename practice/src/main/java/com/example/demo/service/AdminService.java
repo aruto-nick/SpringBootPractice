@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Admin;
+import com.example.demo.form.SignupForm;
 
 public interface AdminService {
 	//管理者情報を登録するメソッド
-	void register(Admin admin);
+	void register(SignupForm signupForm);
 
 }

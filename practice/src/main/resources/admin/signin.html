@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>ログイン画面</title>
+	</head>
+	
+	<body>
+		<h1>ログイン画面</h1>
+		
+		<!-- ログインクリック時、signinにデータを送信する -->
+		<form  th:action="@{/admin/signin}" method="post" th:object="${signinForm}">
+		
+			<table>
+				<tr>
+					<th>メールアドレス</th>
+					<td><input type="text" name="username" required /></td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td><input type="password" name="password" required /></td>
+				</tr>
+			</table>
+			
+			<!--ログインボタン -->
+			<button type="submit">ログイン</button>
+		
+		</form>
+	
+	</body>
+</html>

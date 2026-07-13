@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.entity.Admin;
+import com.example.demo.form.SigninForm;
+import com.example.demo.form.SignupForm;
 import com.example.demo.service.AdminService;
 
 //ブラウザからのリクエスト（URLアクセス）を受け付ける窓口
@@ -22,7 +23,7 @@ public class AdminController {
 	public String showRegisterForm(Model model) {
 		
 		//Java側のデータを運ぶnew Admin()にHTML用の名付け"admin"
-		model.addAttribute("admin", new Admin());
+		model.addAttribute("signupForm", new SignupForm ());
 		
 		//登録画面に戻る
 		return "../admin/signup";
@@ -31,13 +32,29 @@ public class AdminController {
 	
 	@PostMapping("/admin/signup")
 								//ブラウザで入力したデータ"admin"をAdminに入れて引数とする
-	public String registerAdmin(@ModelAttribute("admin") Admin admin) {
+	public String registerAdmin(@ModelAttribute("signupForm") SignupForm signupForm) {
 		
 		//入力したデータをServiceが登録
-		adminService.register(admin);
+		adminService.register(signupForm);
 		
 		//一覧画面に戻る
 		return "redirect:/admin/contacts";
+	}
+	
+	//URL(admin/sign)にアクセス後の処理を定義
+	@GetMapping("/admin/signin")
+	public String showLoginForm(Model model) {
+		
+		model.addAttribute("signinForm", new SigninForm());
+		
+		//URL(admin/sign)をブラウザに表示
+		return "../admin/signin";
+	}
+	
+	@PostMapping("/admin/signin")
+	public String signin (@ModelAttribute("signinForm") SigninForm signinForm ) {
+		
+		return "contact";
 	}
 
 }

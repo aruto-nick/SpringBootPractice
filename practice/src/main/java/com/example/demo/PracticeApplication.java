@@ -24,12 +24,39 @@ public class PracticeApplication{
 	@Bean
 	//ブラウザからのリクエストを通していいかチェックする
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		//下記URLのアクセス権限について宣言
+		//①下記URLのアクセス権限について宣言
 		http
 			.authorizeHttpRequests(auth -> auth
-				// すべてのURLへのアクセスを許可＝ログイン画面の非表示
-				.anyRequest().permitAll() 
+				//ログイン画面・新規登録画面は「全員アクセス許可」
+				.requestMatchers("/admin/signin", "/admin/signup").permitAll()
+				//そのほかのURLは「ログイン必須」
+				.anyRequest().authenticated()
 			)
+			
+			//②ログイン機能
+			.formLogin(login ->  login
+					//ログイン画面のURL
+					.loginPage("/admin/signin")
+					//ログイン成功後に移動するURL「お問い合わせ一覧画面」
+					.defaultSuccessUrl("/admin/contacts", true)
+					//ログイン画面は「全員アクセス許可」
+					.permitAll()
+			)
+			
+			//③ログアウト機能
+			.logout(logout -> logout
+					//Spring Securityに"/admin/logout"というログアウト用の窓口作成をしじ
+					.logoutUrl("/admin/logout")
+					//ログアウト成功後に移動するURL
+					//※「？以下」を付けることでログアウトによってログイン画面に移動と判別できる
+					.logoutSuccessUrl("/admin/signin?logout")
+					
+					//全てのサイトからログアウトできる
+					.permitAll()
+			
+			)
+			
+			
 			// 登録機能（POST送信）でのエラーを防ぐためにCSRF（セキュリティ機能）を一時無効化
 			.csrf(csrf -> csrf.disable()); 
 		return http.build();

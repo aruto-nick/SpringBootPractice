@@ -7,5 +7,8 @@ import com.example.demo.entity.Admin;
 
 @Repository
 public interface AdminRepository extends JpaRepository <Admin, Long> {
+	
+	//変数emailを元にDBからデータを取得
+	Admin findByEmail(String email);
 
 }
